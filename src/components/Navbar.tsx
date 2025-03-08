@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
+import { Sparkles } from "lucide-react";
 
 const navItems = [
   { name: 'About', href: '#about' },
@@ -38,12 +39,21 @@ export default function Navbar() {
       <div className="scroll-indicator" style={{ width: `${(window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100}%` }} />
       <header 
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-3",
           scrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"
         )}
       >
         <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between">
-          <a href="#" className="text-xl font-semibold text-portfolio-900">Victor Lesedy</a>
+          <a href="#" className="flex items-center">
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full opacity-70 group-hover:opacity-100 blur-sm group-hover:blur transition duration-300"></div>
+              <div className="relative flex items-center justify-center bg-white text-portfolio-900 px-3 py-1.5 rounded-full font-bold text-xl">
+                <Sparkles className="w-4 h-4 text-blue-500 mr-1" />
+                <span>VL</span>
+                <Sparkles className="w-4 h-4 text-purple-500 ml-1" />
+              </div>
+            </div>
+          </a>
           
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (

@@ -28,7 +28,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-gray-50 overflow-hidden">
+    <div className="relative min-h-[85vh] flex items-center justify-center bg-gradient-to-br from-blue-50 to-gray-50 overflow-hidden">
       {/* Background shapes */}
       <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-soft"></div>
       <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-soft animation-delay-2000"></div>
@@ -37,13 +37,13 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto text-center">
           <h1 
             ref={headingRef}
-            className="opacity-0 text-4xl md:text-6xl lg:text-7xl font-bold text-portfolio-900 mb-6"
+            className="opacity-0 text-4xl md:text-6xl lg:text-7xl font-bold text-portfolio-900 mb-4"
           >
             Victor Lesedy
           </h1>
           <p 
             ref={subheadingRef}
-            className="opacity-0 text-xl md:text-2xl text-portfolio-600 mb-10 max-w-3xl mx-auto text-balance"
+            className="opacity-0 text-xl md:text-2xl text-portfolio-600 mb-8 max-w-3xl mx-auto text-balance"
           >
             Data Analyst & Product Manager specializing in tech-driven solutions for real-world challenges
           </p>
@@ -64,9 +64,9 @@ export default function Hero() {
         </div>
       </div>
       
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <a href="#about" className="text-portfolio-500 hover:text-portfolio-700 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </a>

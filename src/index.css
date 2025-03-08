@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -92,7 +93,7 @@
   }
   
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 py-16;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 py-10;
   }
   
   .section-title {
@@ -100,7 +101,7 @@
   }
   
   .section-subtitle {
-    @apply text-xl text-portfolio-500 mb-8;
+    @apply text-xl text-portfolio-500 mb-6;
   }
   
   .project-card {
@@ -174,4 +175,25 @@
 
 .animation-delay-900 {
   animation-delay: 900ms;
+}
+
+/* Reducing section spacing */
+section {
+  margin-bottom: 0 !important;
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+
+/* Logo animation */
+@keyframes sparkle {
+  0%, 100% { opacity: 0.7; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.logo-sparkle {
+  animation: sparkle 2s infinite;
+}
+
+.logo-container:hover .logo-sparkle {
+  animation-duration: 1s;
 }
