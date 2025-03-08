@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
-import { Sparkles } from "lucide-react";
 
 const navItems = [
   { name: 'About', href: '#about' },
@@ -48,9 +47,9 @@ export default function Navbar() {
             <div className="relative group">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full opacity-70 group-hover:opacity-100 blur-sm group-hover:blur transition duration-300"></div>
               <div className="relative flex items-center justify-center bg-white text-portfolio-900 px-3 py-1.5 rounded-full font-bold text-xl">
-                <Sparkles className="w-4 h-4 text-blue-500 mr-1" />
+                <span className="mr-1">👨‍💻</span>
                 <span>VL</span>
-                <Sparkles className="w-4 h-4 text-purple-500 ml-1" />
+                <span className="ml-1">👨‍💻</span>
               </div>
             </div>
           </a>
