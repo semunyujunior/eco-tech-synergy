@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -93,7 +92,7 @@
   }
   
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 py-24;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 py-16;
   }
   
   .section-title {
@@ -101,7 +100,7 @@
   }
   
   .section-subtitle {
-    @apply text-xl text-portfolio-500 mb-12 font-light;
+    @apply text-xl text-portfolio-500 mb-8;
   }
   
   .project-card {
@@ -148,4 +147,31 @@
 .scroll-trigger.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-900 {
+  animation-delay: 900ms;
 }

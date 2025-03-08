@@ -37,6 +37,7 @@ const Index = () => {
     };
 
     window.addEventListener('scroll', updateScrollIndicator);
+    updateScrollIndicator(); // Initialize on first load
     
     // Clean up
     return () => {
@@ -49,6 +50,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <div className="scroll-indicator" /> {/* Add it directly in the DOM structure */}
       <Navbar />
       <Hero />
       <About />
