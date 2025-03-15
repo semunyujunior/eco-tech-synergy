@@ -103,7 +103,7 @@ export default function Projects() {
             >
               <div className={`bg-gradient-to-r ${project.color} p-6 text-white`}>
                 <div className="pill bg-white/20 text-white mb-4">{project.category}</div>
-                <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                <h3 className="text-2xl font-bold mb-2 h-14 flex items-center">{project.title}</h3>
                 <p>{project.description}</p>
               </div>
               <div className="p-6 bg-white">

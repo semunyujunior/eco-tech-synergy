@@ -1,8 +1,15 @@
-
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useToast } from "@/hooks/use-toast";
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,10 +32,38 @@ export default function Contact() {
     };
   }, []);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log('Form submitted');
+    setIsSubmitting(true);
+    
+    // Email content preparation
+    const subject = `Portfolio Contact: ${formData.name}`;
+    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
+    const mailtoLink = `mailto:lesedyvictor@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success toast and reset form
+    toast({
+      title: "Message Prepared",
+      description: "Your email client has been opened with your message. Please send the email to complete.",
+    });
+    
+    setFormData({
+      name: '',
+      email: '',
+      message: ''
+    });
+    setIsSubmitting(false);
   };
 
   return (
@@ -64,7 +99,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-sm text-portfolio-300 mb-1">Email</h4>
-                  <a href="mailto:your.email@example.com" className="text-white hover:text-portfolio-300 transition-colors">victor.lesedy@example.com</a>
+                  <a href="mailto:lesedyvictor@gmail.com" className="text-white hover:text-portfolio-300 transition-colors">lesedyvictor@gmail.com</a>
                 </div>
               </div>
               
@@ -115,6 +150,8 @@ export default function Contact() {
                 <input 
                   type="text" 
                   id="name" 
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg bg-portfolio-800/40 border border-portfolio-700/50 text-white focus:outline-none focus:ring-2 focus:ring-portfolio-500/50 focus:border-transparent transition-all"
                   placeholder="John Doe"
                   required
@@ -126,6 +163,8 @@ export default function Contact() {
                 <input 
                   type="email" 
                   id="email" 
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg bg-portfolio-800/40 border border-portfolio-700/50 text-white focus:outline-none focus:ring-2 focus:ring-portfolio-500/50 focus:border-transparent transition-all"
                   placeholder="john@example.com"
                   required
@@ -137,6 +176,8 @@ export default function Contact() {
                 <textarea 
                   id="message" 
                   rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg bg-portfolio-800/40 border border-portfolio-700/50 text-white focus:outline-none focus:ring-2 focus:ring-portfolio-500/50 focus:border-transparent transition-all resize-none"
                   placeholder="I'd like to discuss a potential project..."
                   required
@@ -145,9 +186,10 @@ export default function Contact() {
               
               <button 
                 type="submit"
-                className="w-full py-4 rounded-lg bg-portfolio-500 text-white font-medium transition-all hover:bg-portfolio-400 hover:shadow-lg hover:shadow-portfolio-500/20 transform hover:-translate-y-1 active:translate-y-0"
+                disabled={isSubmitting}
+                className="w-full py-4 rounded-lg bg-portfolio-500 text-white font-medium transition-all hover:bg-portfolio-400 hover:shadow-lg hover:shadow-portfolio-500/20 transform hover:-translate-y-1 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
               
               <p className="text-xs text-center text-portfolio-400 mt-4">I typically respond within 24-48 hours</p>
